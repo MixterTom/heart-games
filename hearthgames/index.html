@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghép Mảnh Trái Tim</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ghép Mảnh Trái Tim</h1>
+    <div class="heart-wrapper">
+      <!-- Trái tim duy nhất, lộ dần theo 8 lớp phủ trắng từ trái sang phải -->
+      <svg id="heart-svg" viewBox="0 0 320 288" width="400" height="360">
+        <defs>
+          <clipPath id="heart-shape">
+            <path d="M160,272
+              C32,176 32,64 160,96
+              C288,64 288,176 160,272
+              Z"/>
+          </clipPath>
+        </defs>
+        <!-- Trái tim nền mềm mại, hiện đại -->
+        <path id="main-heart" d="M160,272
+          C32,176 32,64 160,96
+          C288,64 288,176 160,272
+          Z" class="piece"/>
+        <!-- 8 lớp phủ trắng che trái tim, sẽ ẩn dần -->
+        <g clip-path="url(#heart-shape)">
+          <rect id="cover-1" x="0" y="0" width="70" height="288" fill="#fff" />
+          <rect id="cover-2" x="70" y="0" width="30" height="288" fill="#fff" />
+          <rect id="cover-3" x="100" y="0" width="30" height="288" fill="#fff" />
+          <rect id="cover-4" x="130" y="0" width="30" height="288" fill="#fff" />
+          <rect id="cover-5" x="160" y="0" width="30" height="288" fill="#fff" />
+          <rect id="cover-6" x="190" y="0" width="30" height="288" fill="#fff" />
+          <rect id="cover-7" x="220" y="0" width="30" height="288" fill="#fff" />
+          <rect id="cover-8" x="250" y="0" width="70" height="288" fill="#fff" />
+        </g>
+      </svg>
+    </div>
+    <div class="fireworks-container hidden" style="position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none;">
+      <canvas id="fireworks-canvas" width="400" height="360"></canvas>
+    </div>
+    <div class="question-box">
+      <div id="question-number">Câu 1/8</div>
+      <div id="question-text"></div>
+      <textarea id="answer" rows="3" placeholder="Nhập câu trả lời..."></textarea>
+      <button id="submit-btn">Hoàn thành</button>
+      <button id="show-summary-btn" type="button" style="margin-top:10px; background:#fff; color:#e63963; border:1.5px solid #e63963; border-radius:8px; padding:8px 22px; font-size:1em; cursor:pointer; transition:background 0.2s;">Xem lại câu trả lời</button>
+    </div>
+    <div id="summary-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Tổng hợp câu trả lời</h2>
+        <div id="summary-list"></div>
+        <button id="close-summary">Hoàn tất</button>
+      </div>
+    </div>
+    <div id="congrats" class="hidden">
+      <div class="congrats-message">🎉 Chúc mừng cả lớp đã hoàn thành trái tim kỷ niệm! Hãy luôn giữ những ký ức đẹp này trong tim nhé! 💖</div>
+      <button id="show-summary-btn-final" type="button" style="margin-top:18px; background:#fff; color:#e63963; border:2px solid #e63963; border-radius:10px; padding:12px 36px; font-size:1.15em; font-weight:bold; cursor:pointer; transition:background 0.2s, color 0.2s; box-shadow:0 2px 8px rgba(230,57,99,0.10); letter-spacing:1px;">Xem lại câu trả lời</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <audio id="congrats-audio" src="cheer.mp3" preload="auto"></audio>
+</body>
+</html> 
